@@ -18,6 +18,7 @@ from tensorflow.keras.layers import Dense
 import matplotlib.pyplot as plt
 import random
 
+
 # path for images 
 imagePaths = list(paths.list_images("./images"))
 
@@ -56,7 +57,7 @@ trainY = lb.fit_transform(trainY)
 testY = lb.fit_transform(testY)
 
 # optimizer for gradient descent method 
-opt = SGD(lr=0.01, decay =0.01/40, momentum=0.9, nesterov=True)
+opt = SGD(learning_rate=0.01, decay =0.01/40, momentum=0.9, nesterov=True)
 
 '''
 aug = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,

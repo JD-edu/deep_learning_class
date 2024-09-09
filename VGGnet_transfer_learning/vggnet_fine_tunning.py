@@ -18,7 +18,7 @@ from tensorflow.keras.optimizers import SGD
 from sklearn.metrics import classification_report
 
 
-imagePaths = list(paths.list_images("./images"))
+imagePaths = list(paths.list_images("./images_animals"))
 print(imagePaths)
 
 classNames = [pt.split(os.path.sep)[-2] for pt in imagePaths]
@@ -88,7 +88,8 @@ aug = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,
 
 model.fit(aug.flow(trainX, trainY, batch_size=32),
 	validation_data=(testX, testY), epochs=1,
-	steps_per_epoch=len(trainX) // 32, verbose=1)
+#	steps_per_epoch=len(trainX) // 32, verbose=1)
+	verbose=1)
 
 predictions = model.predict(testX, batch_size=32)
 print(classification_report(testY.argmax(axis=1),
